@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netcoreapp2.0;net45</TargetFrameworks>
+    <Company>Wavenet</Company>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+    <DocumentationFile>Wavenet.Api.ViewModels.IdViewModel.xml</DocumentationFile>
+    <Description>A dedicated ViewModel to expose internal IDs outside of the application.</Description>
+    <Copyright>Wavenet ©</Copyright>
+    <PackageLicenseExpression>LGPL-3.0-only</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/wavenet-be/Wavenet.Api.ViewModels.IdViewModel/</PackageProjectUrl>
+    <PackageIconUrl>https://www.wavenet.be/favicon.ico</PackageIconUrl>
+    <RepositoryUrl>https://github.com/wavenet-be/Wavenet.Api.ViewModels.IdViewModel/</RepositoryUrl>
+    <PackageTags>ViewModel Web API</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Wavenet.Api.ViewModels.IdViewModel.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Hashids.net" Version="1.3.0" />
+    <PackageReference Include="Microsoft.Net.Compilers" Version="3.3.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <Reference Include="System.ComponentModel.DataAnnotations" Condition="'$(TargetFramework)' == 'net45'" />
+  </ItemGroup>
+</Project>

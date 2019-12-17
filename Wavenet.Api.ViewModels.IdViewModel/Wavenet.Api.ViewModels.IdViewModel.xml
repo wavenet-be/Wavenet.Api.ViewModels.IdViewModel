@@ -1,0 +1,191 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wavenet.Api.ViewModels.IdViewModel</name>
+    </assembly>
+    <members>
+        <member name="T:Wavenet.Api.ViewModels.IdViewModel">
+            <summary>
+            A dedicated ViewModel to expose internal IDs outside of the application.
+            </summary>
+            <seealso cref="T:System.IEquatable`1" />
+        </member>
+        <member name="F:Wavenet.Api.ViewModels.IdViewModel.hashids">
+            <summary>
+            The hashids.
+            </summary>
+        </member>
+        <member name="F:Wavenet.Api.ViewModels.IdViewModel.id">
+            <summary>
+            The identifier.
+            </summary>
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.IdViewModel.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wavenet.Api.ViewModels.IdViewModel"/> class.
+            </summary>
+            <param name="id">The identifier.</param>
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.IdViewModel.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wavenet.Api.ViewModels.IdViewModel"/> class.
+            </summary>
+            <param name="code">The code.</param>
+        </member>
+        <member name="P:Wavenet.Api.ViewModels.IdViewModel.Code">
+            <summary>
+            Gets the code.
+            </summary>
+            <value>
+            The code.
+            </value>
+        </member>
+        <member name="P:Wavenet.Api.ViewModels.IdViewModel.Id">
+            <summary>
+            Gets the identifier.
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="P:Wavenet.Api.ViewModels.IdViewModel.IsValid">
+            <summary>
+            Gets a value indicating whether this <c>Id</c> is valid.
+            </summary>
+            <value>
+              <c>true</c> if this <c>Id</c> is valid; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.IdViewModel.op_Implicit(System.Int32)~Wavenet.Api.ViewModels.IdViewModel">
+            <summary>
+            Performs an implicit conversion from <see cref="T:System.Int32"/> to <see cref="T:Wavenet.Api.ViewModels.IdViewModel"/>.
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.IdViewModel.op_Implicit(System.String)~Wavenet.Api.ViewModels.IdViewModel">
+            <summary>
+            Performs an implicit conversion from <see cref="T:System.String"/> to <see cref="T:Wavenet.Api.ViewModels.IdViewModel"/>.
+            </summary>
+            <param name="code">The code.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.IdViewModel.op_Implicit(Wavenet.Api.ViewModels.IdViewModel)~System.Int32">
+            <summary>
+            Performs an implicit conversion from <see cref="T:Wavenet.Api.ViewModels.IdViewModel"/> to <see cref="T:System.Int32"/>.
+            </summary>
+            <param name="model">The model.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.IdViewModel.op_Implicit(Wavenet.Api.ViewModels.IdViewModel)~System.String">
+            <summary>
+            Performs an implicit conversion from <see cref="T:Wavenet.Api.ViewModels.IdViewModel"/> to <see cref="T:System.String"/>.
+            </summary>
+            <param name="model">The model.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.IdViewModel.op_Inequality(Wavenet.Api.ViewModels.IdViewModel,Wavenet.Api.ViewModels.IdViewModel)">
+            <summary>
+            Implements the operator !=.
+            </summary>
+            <param name="x">The x.</param>
+            <param name="y">The y.</param>
+            <returns>
+            The result of the operator.
+            </returns>
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.IdViewModel.op_Equality(Wavenet.Api.ViewModels.IdViewModel,Wavenet.Api.ViewModels.IdViewModel)">
+            <summary>
+            Implements the operator ==.
+            </summary>
+            <param name="x">The x.</param>
+            <param name="y">The y.</param>
+            <returns>
+            The result of the operator.
+            </returns>
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.IdViewModel.Equals(Wavenet.Api.ViewModels.IdViewModel)">
+            <inheritdoc />
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.IdViewModel.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.IdViewModel.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.IdViewModel.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.IdViewModel.System#ComponentModel#DataAnnotations#IValidatableObject#Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Determines whether the specified object is valid.
+            </summary>
+            <param name="validationContext">The validation context.</param>
+            <returns>
+            A collection that holds failed-validation information.
+            </returns>
+        </member>
+        <member name="T:Wavenet.Api.ViewModels.IdViewModel.Converter">
+            <summary>
+            <see cref="T:System.ComponentModel.TypeConverter"/> for <see cref="T:Wavenet.Api.ViewModels.IdViewModel"/>.
+            </summary>
+            <seealso cref="T:System.ComponentModel.TypeConverter" />
+        </member>
+        <member name="F:Wavenet.Api.ViewModels.IdViewModel.Converter.ValidTypes">
+            <summary>
+            The valid types.
+            </summary>
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.IdViewModel.Converter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary>
+            Returns whether this converter can convert an object of the given type to the type of this converter, using the specified context.
+            </summary>
+            <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext" /> that provides a format context.</param>
+            <param name="sourceType">A <see cref="T:System.Type" /> that represents the type you want to convert from.</param>
+            <returns>
+              <see langword="true" /> if this converter can perform the conversion; otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.IdViewModel.Converter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary>
+            Returns whether this converter can convert the object to the specified type, using the specified context.
+            </summary>
+            <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext" /> that provides a format context.</param>
+            <param name="destinationType">A <see cref="T:System.Type" /> that represents the type you want to convert to.</param>
+            <returns>
+              <see langword="true" /> if this converter can perform the conversion; otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.IdViewModel.Converter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+            <summary>
+            Converts the given object to the type of this converter, using the specified context and culture information.
+            </summary>
+            <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext" /> that provides a format context.</param>
+            <param name="culture">The <see cref="T:System.Globalization.CultureInfo" /> to use as the current culture.</param>
+            <param name="value">The <see cref="T:System.Object" /> to convert.</param>
+            <returns>
+            An <see cref="T:System.Object" /> that represents the converted value.
+            </returns>
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.IdViewModel.Converter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+            <summary>
+            Converts the given value object to the specified type, using the specified context and culture information.
+            </summary>
+            <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext" /> that provides a format context.</param>
+            <param name="culture">A <see cref="T:System.Globalization.CultureInfo" />. If <see langword="null" /> is passed, the current culture is assumed.</param>
+            <param name="value">The <see cref="T:System.Object" /> to convert.</param>
+            <param name="destinationType">The <see cref="T:System.Type" /> to convert the <paramref name="value" /> parameter to.</param>
+            <returns>
+            An <see cref="T:System.Object" /> that represents the converted value.
+            </returns>
+        </member>
+    </members>
+</doc>
