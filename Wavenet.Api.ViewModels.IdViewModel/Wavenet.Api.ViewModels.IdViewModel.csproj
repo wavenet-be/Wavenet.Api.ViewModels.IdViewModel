@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.0;net45</TargetFrameworks>
+    <TargetFrameworks>net45;netcoreapp2.0;</TargetFrameworks>
     <Company>Wavenet</Company>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
@@ -33,6 +33,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <Reference Include="System.ComponentModel.DataAnnotations" Condition="'$(TargetFramework)' == 'net45'" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.2.0" Condition="'$(TargetFramework)' == 'netcoreapp2.0'" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" Condition="'$(TargetFramework)' == 'netcoreapp2.0'" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection.Abstractions" Version="2.2.0" Condition="'$(TargetFramework)' == 'netcoreapp2.0'" />
+      <Reference Include="System.ComponentModel.DataAnnotations" Condition="'$(TargetFramework)' == 'net45'" />
+    <Reference Include="System.Web" Condition="'$(TargetFramework)' == 'net45'" />
   </ItemGroup>
 </Project>

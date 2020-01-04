@@ -13,7 +13,7 @@ namespace Wavenet.Api.ViewModels
     using System.Linq;
     using System.Security.Cryptography;
 
-    using HashidsNet;
+    using Wavenet.Api.ViewModels.ProtectionProviders;
 
     /// <summary>
     /// A dedicated ViewModel to expose internal IDs outside of the application.
@@ -23,11 +23,6 @@ namespace Wavenet.Api.ViewModels
     [DebuggerDisplay("{Id}")]
     public class IdViewModel : IEquatable<IdViewModel>, IValidatableObject
     {
-        /// <summary>
-        /// The hashids.
-        /// </summary>
-        private static Hashids hashids = new Hashids("Super Salt", 4, "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890");
-
         /// <summary>
         /// The identifier.
         /// </summary>
@@ -40,7 +35,7 @@ namespace Wavenet.Api.ViewModels
         public IdViewModel(int id)
         {
             this.id = id;
-            this.Code = hashids.Encode(id);
+            this.Code = EnsureProtectionProvider().Protect(id);
             this.IsValid = true;
         }
 
@@ -50,14 +45,25 @@ namespace Wavenet.Api.ViewModels
         /// <param name="code">The code.</param>
         public IdViewModel(string code)
         {
-            var ids = hashids.Decode(code);
-            if (ids.Length == 1)
+            try
             {
-                this.id = ids[0];
+                this.id = EnsureProtectionProvider().Unprotect(code);
                 this.Code = code;
                 this.IsValid = true;
             }
+            catch (CryptographicException)
+            {
+                this.IsValid = false;
+            }
         }
+
+        /// <summary>
+        /// Gets the protection provider.
+        /// </summary>
+        /// <value>
+        /// The protection provider.
+        /// </value>
+        public static Lazy<IIdViewModelProtectionProvider> ProtectionProvider { get; internal set; }
 
         /// <summary>
         /// Gets the code.
@@ -169,6 +175,13 @@ namespace Wavenet.Api.ViewModels
                 return Enumerable.Empty<ValidationResult>();
             }
         }
+
+        /// <summary>
+        /// Ensures the protection provider is correctly initialized.
+        /// </summary>
+        /// <returns>The underlying <see cref="IIdViewModelProtectionProvider"/>.</returns>
+        private static IIdViewModelProtectionProvider EnsureProtectionProvider()
+            => ProtectionProvider?.Value ?? throw new InvalidOperationException("IdViewModel is not initialized!");
 
         /// <summary>
         /// <see cref="TypeConverter"/> for <see cref="IdViewModel"/>.

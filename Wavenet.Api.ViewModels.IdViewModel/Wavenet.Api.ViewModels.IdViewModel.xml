@@ -10,11 +10,6 @@
             </summary>
             <seealso cref="T:System.IEquatable`1" />
         </member>
-        <member name="F:Wavenet.Api.ViewModels.IdViewModel.hashids">
-            <summary>
-            The hashids.
-            </summary>
-        </member>
         <member name="F:Wavenet.Api.ViewModels.IdViewModel.id">
             <summary>
             The identifier.
@@ -31,6 +26,14 @@
             Initializes a new instance of the <see cref="T:Wavenet.Api.ViewModels.IdViewModel"/> class.
             </summary>
             <param name="code">The code.</param>
+        </member>
+        <member name="P:Wavenet.Api.ViewModels.IdViewModel.ProtectionProvider">
+            <summary>
+            Gets the protection provider.
+            </summary>
+            <value>
+            The protection provider.
+            </value>
         </member>
         <member name="P:Wavenet.Api.ViewModels.IdViewModel.Code">
             <summary>
@@ -133,6 +136,12 @@
             A collection that holds failed-validation information.
             </returns>
         </member>
+        <member name="M:Wavenet.Api.ViewModels.IdViewModel.EnsureProtectionProvider">
+            <summary>
+            Ensures the protection provider is correctly initialized.
+            </summary>
+            <returns>The underlying <see cref="T:Wavenet.Api.ViewModels.ProtectionProviders.IIdViewModelProtectionProvider"/>.</returns>
+        </member>
         <member name="T:Wavenet.Api.ViewModels.IdViewModel.Converter">
             <summary>
             <see cref="T:System.ComponentModel.TypeConverter"/> for <see cref="T:Wavenet.Api.ViewModels.IdViewModel"/>.
@@ -186,6 +195,168 @@
             <returns>
             An <see cref="T:System.Object" /> that represents the converted value.
             </returns>
+        </member>
+        <member name="T:Wavenet.Api.ViewModels.IdViewModelInitializer">
+            <summary>
+            <see cref="T:Wavenet.Api.ViewModels.IdViewModelInitializer"/> initialize <see cref="T:Wavenet.Api.ViewModels.IdViewModel"/>.
+            </summary>
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.IdViewModelInitializer.AddIdViewModel``1(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds <typeparamref name="TProtectionProvider"/> as <see cref="T:Wavenet.Api.ViewModels.IdViewModel"/> protection engine.
+            </summary>
+            <typeparam name="TProtectionProvider">Type of <see cref="T:Wavenet.Api.ViewModels.ProtectionProviders.IIdViewModelProtectionProvider"/>.</typeparam>
+            <param name="services">The services.</param>
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.IdViewModelInitializer.AddIdViewModel(Microsoft.Extensions.DependencyInjection.IServiceCollection,Wavenet.Api.ViewModels.ProtectionProviders.IIdViewModelProtectionProvider)">
+            <summary>
+            Adds the specified <paramref name="protectionProvider"/> as <see cref="T:Wavenet.Api.ViewModels.IdViewModel"/> protection engine.
+            </summary>
+            <param name="services">The services.</param>
+            <param name="protectionProvider">The protection provider.</param>
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.IdViewModelInitializer.AddIdViewModel(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Func{Wavenet.Api.ViewModels.ProtectionProviders.IIdViewModelProtectionProvider})">
+            <summary>
+            Adds the returned <see cref="T:Wavenet.Api.ViewModels.ProtectionProviders.IIdViewModelProtectionProvider"/> from <paramref name="protectionProvider"/> as <see cref="T:Wavenet.Api.ViewModels.IdViewModel"/> protection engine.
+            </summary>
+            <param name="services">The services.</param>
+            <param name="protectionProvider">The protection provider.</param>
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.IdViewModelInitializer.EnsureNotInitialized">
+            <summary>
+            Ensures that <see cref="T:Wavenet.Api.ViewModels.IdViewModel"/> is not already initialized.
+            </summary>
+        </member>
+        <member name="T:Wavenet.Api.ViewModels.ProtectionProviders.DevelopmentNoProtectionProvider">
+            <summary>
+            <see cref="T:Wavenet.Api.ViewModels.ProtectionProviders.DevelopmentNoProtectionProvider"/> simplify debug use of <see cref="T:Wavenet.Api.ViewModels.IdViewModel"/> by sending code as id.
+            </summary>
+            <seealso cref="T:Wavenet.Api.ViewModels.ProtectionProviders.IIdViewModelProtectionProvider" />
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.ProtectionProviders.DevelopmentNoProtectionProvider.#ctor(Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wavenet.Api.ViewModels.ProtectionProviders.DevelopmentNoProtectionProvider" /> class.
+            </summary>
+            <param name="hostingEnvironment">The hosting environment.</param>
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.ProtectionProviders.DevelopmentNoProtectionProvider.Protect(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.ProtectionProviders.DevelopmentNoProtectionProvider.Unprotect(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Wavenet.Api.ViewModels.ProtectionProviders.HashidsProtectionProvider">
+            <summary>
+            <see cref="T:Wavenet.Api.ViewModels.ProtectionProviders.HashidsProtectionProvider"/> uses <see cref="T:HashidsNet.Hashids"/> as protection mechanism for <see cref="T:Wavenet.Api.ViewModels.IdViewModel"/>.
+            </summary>
+            <seealso cref="T:Wavenet.Api.ViewModels.ProtectionProviders.IIdViewModelProtectionProvider" />
+        </member>
+        <member name="F:Wavenet.Api.ViewModels.ProtectionProviders.HashidsProtectionProvider.DefaultAlphabet">
+            <summary>
+            The default alphabet.
+            </summary>
+        </member>
+        <member name="F:Wavenet.Api.ViewModels.ProtectionProviders.HashidsProtectionProvider.DefaultSeps">
+            <summary>
+            The default seps.
+            </summary>
+        </member>
+        <member name="F:Wavenet.Api.ViewModels.ProtectionProviders.HashidsProtectionProvider.MinHashLength">
+            <summary>
+            The minimum hash length.
+            </summary>
+        </member>
+        <member name="F:Wavenet.Api.ViewModels.ProtectionProviders.HashidsProtectionProvider.protection">
+            <summary>
+            The protection.
+            </summary>
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.ProtectionProviders.HashidsProtectionProvider.#ctor(System.String,System.Int32,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wavenet.Api.ViewModels.ProtectionProviders.HashidsProtectionProvider" /> class.
+            </summary>
+            <param name="salt">The salt.</param>
+            <param name="minHashLength">Minimum length of the hash.</param>
+            <param name="alphabet">The alphabet.</param>
+            <param name="seps">The seps.</param>
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.ProtectionProviders.HashidsProtectionProvider.Protect(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.ProtectionProviders.HashidsProtectionProvider.Unprotect(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Wavenet.Api.ViewModels.ProtectionProviders.IIdViewModelProtectionProvider">
+            <summary>
+            <see cref="T:Wavenet.Api.ViewModels.ProtectionProviders.IIdViewModelProtectionProvider"/> is the protection engine used by <see cref="T:Wavenet.Api.ViewModels.IdViewModel"/>.
+            </summary>
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.ProtectionProviders.IIdViewModelProtectionProvider.Protect(System.Int32)">
+            <summary>
+            Protects the specified identifier.
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns>
+            The protected id.
+            </returns>
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.ProtectionProviders.IIdViewModelProtectionProvider.Unprotect(System.String)">
+            <summary>
+            Unprotects the specified code.
+            </summary>
+            <param name="code">The code.</param>
+            <returns>
+            The underlying id.
+            </returns>
+        </member>
+        <member name="T:Wavenet.Api.ViewModels.ProtectionProviders.MachineKeyProtectionProvider">
+            <summary>
+            <see cref="T:Wavenet.Api.ViewModels.ProtectionProviders.MachineKeyProtectionProvider"/>.
+            </summary>
+            <seealso cref="T:Wavenet.Api.ViewModels.ProtectionProviders.IIdViewModelProtectionProvider" />
+        </member>
+        <member name="F:Wavenet.Api.ViewModels.ProtectionProviders.MachineKeyProtectionProvider.dataProtector">
+            <summary>
+            The data protector.
+            </summary>
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.ProtectionProviders.MachineKeyProtectionProvider.#ctor(Microsoft.AspNetCore.DataProtection.IDataProtectionProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wavenet.Api.ViewModels.ProtectionProviders.MachineKeyProtectionProvider"/> class.
+            </summary>
+            <param name="dataProtectionProvider">The data protection provider.</param>
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.ProtectionProviders.MachineKeyProtectionProvider.Protect(System.Int32)">
+            <summary>
+            Protects the specified identifier.
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns>
+            The protected id.
+            </returns>
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.ProtectionProviders.MachineKeyProtectionProvider.Unprotect(System.String)">
+            <summary>
+            Unprotects the specified code.
+            </summary>
+            <param name="code">The code.</param>
+            <returns>
+            The underlying id.
+            </returns>
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.ProtectionProviders.MachineKeyProtectionProvider.ToWebSafeBase64(System.Byte[])">
+            <summary>
+            Converts the specified <paramref name="data"/> to Base64 (web-safe).
+            </summary>
+            <param name="data">The data.</param>
+            <returns>The base64 (web-safe).</returns>
+        </member>
+        <member name="M:Wavenet.Api.ViewModels.ProtectionProviders.MachineKeyProtectionProvider.FromWebSafeBase64(System.String)">
+            <summary>
+            Converts the specified <paramref name="base64"/> (web-safe) to <c>byte[]</c>.
+            </summary>
+            <param name="base64">The base64.</param>
+            <returns>The <c>byte[]</c> from the specified <paramref name="base64"/>.</returns>
         </member>
     </members>
 </doc>

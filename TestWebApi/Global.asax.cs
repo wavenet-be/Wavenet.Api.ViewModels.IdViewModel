@@ -22,6 +22,7 @@ namespace TestWebApi
                 });
             });
             GlobalConfiguration.Configure(WebApiConfig.Register);
+            IdViewModelConfig.Configure();
         }
     }
 }
