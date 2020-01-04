@@ -1,9 +1,12 @@
 ﻿namespace TestWebApi.Controllers
 {
     using System.Collections.Generic;
+    using System.Net;
+    using System.Net.Http;
     using System.Web.Http;
 
     using AutoMapper;
+
     using TestWebApi.Models;
     using TestWebApi.Repositories;
     using TestWebApi.ViewModels;
@@ -31,6 +34,11 @@
         [Route("{id}")]
         public UserViewModel Get(IdViewModel id)
         {
+            if (!this.ModelState.IsValid)
+            {
+                throw new HttpResponseException(this.Request.CreateErrorResponse(HttpStatusCode.BadRequest, this.ModelState));
+            }
+
             return this.mapper.Map<UserViewModel>(new UserRepository().Get(id));
         }
     }
