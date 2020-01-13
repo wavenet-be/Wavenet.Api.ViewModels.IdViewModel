@@ -1,20 +1,19 @@
 // -----------------------------------------------------------------------
-//  <copyright file="DevelopmentNoProtectionProviderTests.cs" company="Wavenet">
+//  <copyright file="MachineKeyProtectionProviderTests.cs" company="Wavenet">
 //  Copyright (c) Wavenet. All rights reserved.
 //  </copyright>
 // -----------------------------------------------------------------------
 
 namespace Wavenet.Api.ViewModels.IdViewModel.Tests
 {
-    using System;
-
+    using Microsoft.AspNetCore.DataProtection;
     using Microsoft.AspNetCore.Hosting.Internal;
 
     using Wavenet.Api.ViewModels.ProtectionProviders;
 
     using Xunit;
 
-    public class DevelopmentNoProtectionProviderTests
+    public class MachineKeyProtectionProviderTests
     {
         [Theory]
         [InlineData(int.MinValue)]
@@ -24,25 +23,14 @@ namespace Wavenet.Api.ViewModels.IdViewModel.Tests
         [InlineData(int.MaxValue)]
         public void ProtectUnprotect(int id)
         {
-            var fakeEnvironment = new HostingEnvironment();
-            fakeEnvironment.EnvironmentName = "Development";
-            var provider = new DevelopmentNoProtectionProvider(fakeEnvironment);
+            var dataProtectionProvider = DataProtectionProvider.Create("Test App");
+            var provider = new MachineKeyProtectionProvider(dataProtectionProvider);
 
             var protectedId = provider.Protect(id);
-            Assert.Equal(id.ToString(), protectedId);
+            Assert.NotEqual(id.ToString(), protectedId);
 
             var unprotectedId = provider.Unprotect(protectedId);
             Assert.Equal(id, unprotectedId);
-        }
-
-        [Fact]
-        public void CannotBeUsedInProduction()
-        {
-            Assert.Throws<InvalidOperationException>(() =>
-            {
-                var provider = new DevelopmentNoProtectionProvider(new HostingEnvironment());
-                provider.Protect(42);
-            });
         }
     }
 }

@@ -21,7 +21,10 @@ namespace Wavenet.Api.ViewModels.IdViewModel.Tests
         public void ProtectUnprotect(int id)
         {
             var provider = new HashidsProtectionProvider("ThisIsSaltz");
+
             var protectedId = provider.Protect(id);
+            Assert.NotEqual(id.ToString(), protectedId);
+
             var unprotectedId = provider.Unprotect(protectedId);
             Assert.Equal(id, unprotectedId);
         }
@@ -34,7 +37,10 @@ namespace Wavenet.Api.ViewModels.IdViewModel.Tests
             Assert.Throws<CryptographicException>(() =>
             {
                 var provider = new HashidsProtectionProvider("ThisIsSaltz");
+
                 var protectedId = provider.Protect(id);
+                Assert.NotEqual(id.ToString(), protectedId);
+
                 var unprotectedId = provider.Unprotect(protectedId);
                 Assert.Equal(id, unprotectedId);
             });
