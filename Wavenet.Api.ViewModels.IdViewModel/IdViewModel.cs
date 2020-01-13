@@ -20,7 +20,7 @@ namespace Wavenet.Api.ViewModels
     /// </summary>
     /// <seealso cref="IEquatable{IdViewModel}" />
     [TypeConverter(typeof(Converter))]
-    [DebuggerDisplay("{Id}")]
+    [DebuggerDisplay("{" + nameof(Id) + "}")]
     public class IdViewModel : IEquatable<IdViewModel>, IValidatableObject
     {
         /// <summary>
