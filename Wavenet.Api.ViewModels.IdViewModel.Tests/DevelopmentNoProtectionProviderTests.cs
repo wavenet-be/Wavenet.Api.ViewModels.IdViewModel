@@ -40,7 +40,10 @@ namespace Wavenet.Api.ViewModels.IdViewModel.Tests
         {
             Assert.Throws<InvalidOperationException>(() =>
             {
-                var provider = new DevelopmentNoProtectionProvider(new HostingEnvironment());
+                var fakeEnvironment = new HostingEnvironment();
+                fakeEnvironment.EnvironmentName = "Production";
+                var provider = new DevelopmentNoProtectionProvider(fakeEnvironment);
+
                 provider.Protect(42);
             });
         }
