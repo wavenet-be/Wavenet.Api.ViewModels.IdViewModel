@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestAspCore2", "TestAspCore
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{10E54DCE-5708-43F4-81A8-F470A98CD9ED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wavenet.Api.ViewModels.IdViewModel.Tests", "Wavenet.Api.ViewModels.IdViewModel.Tests\Wavenet.Api.ViewModels.IdViewModel.Tests.csproj", "{6E8A8784-DA19-475E-93EF-B78D3D46617B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{47008940-2FB2-49E6-A938-F30287F780A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47008940-2FB2-49E6-A938-F30287F780A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47008940-2FB2-49E6-A938-F30287F780A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E8A8784-DA19-475E-93EF-B78D3D46617B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E8A8784-DA19-475E-93EF-B78D3D46617B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E8A8784-DA19-475E-93EF-B78D3D46617B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E8A8784-DA19-475E-93EF-B78D3D46617B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -36,6 +42,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{D60EF5BB-4C7C-416C-AF96-F3C8E9405BAC} = {10E54DCE-5708-43F4-81A8-F470A98CD9ED}
 		{47008940-2FB2-49E6-A938-F30287F780A7} = {10E54DCE-5708-43F4-81A8-F470A98CD9ED}
+		{6E8A8784-DA19-475E-93EF-B78D3D46617B} = {10E54DCE-5708-43F4-81A8-F470A98CD9ED}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0A6A3E82-CDCA-4F1E-876B-A7800AD63FED}
