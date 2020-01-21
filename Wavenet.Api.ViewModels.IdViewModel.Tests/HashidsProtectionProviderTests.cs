@@ -6,8 +6,6 @@
 
 namespace Wavenet.Api.ViewModels.IdViewModel.Tests
 {
-    using System.Security.Cryptography;
-
     using Wavenet.Api.ViewModels.ProtectionProviders;
 
     using Xunit;
@@ -15,6 +13,8 @@ namespace Wavenet.Api.ViewModels.IdViewModel.Tests
     public class HashidsProtectionProviderTests
     {
         [Theory]
+        [InlineData(int.MinValue)]
+        [InlineData(-42)]
         [InlineData(0)]
         [InlineData(42)]
         [InlineData(int.MaxValue)]
@@ -27,23 +27,6 @@ namespace Wavenet.Api.ViewModels.IdViewModel.Tests
 
             var unprotectedId = provider.Unprotect(protectedId);
             Assert.Equal(id, unprotectedId);
-        }
-
-        [Theory]
-        [InlineData(int.MinValue)]
-        [InlineData(-42)]
-        public void UnsupportedProtect(int id)
-        {
-            Assert.Throws<CryptographicException>(() =>
-            {
-                var provider = new HashidsProtectionProvider("ThisIsSaltz");
-
-                var protectedId = provider.Protect(id);
-                Assert.NotEqual(id.ToString(), protectedId);
-
-                var unprotectedId = provider.Unprotect(protectedId);
-                Assert.Equal(id, unprotectedId);
-            });
         }
     }
 }
