@@ -48,13 +48,23 @@ namespace Wavenet.Api.ViewModels.ProtectionProviders
 
         /// <inheritdoc />
         public string Protect(int id)
-            => this.protection.Encode(id);
+            => this.protection.EncodeLong(id >= 0 ? new long[] { id } : new[] { 0L, -(long)id });
 
         /// <inheritdoc />
         public int Unprotect(string code)
         {
-            var ids = this.protection.Decode(code);
-            return ids.Length == 1 ? ids[0] : throw new CryptographicException();
+            var ids = this.protection.DecodeLong(code);
+            switch (ids.Length)
+            {
+                case 1:
+                    return (int)ids[0];
+
+                case 2:
+                    return ids[0] == 0 ? (int)-ids[1] : throw new CryptographicException();
+
+                default:
+                    throw new CryptographicException();
+            }
         }
     }
 }
