@@ -1,5 +1,5 @@
-name: ASP.NET CI
-on: [push]
+name: CI
+on: [push, pull_request]
 jobs:
   build:
     runs-on: windows-latest
