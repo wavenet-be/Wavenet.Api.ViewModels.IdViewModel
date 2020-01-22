@@ -4,11 +4,15 @@
         <TargetFramework>netcoreapp2.2</TargetFramework>
 
         <IsPackable>false</IsPackable>
+
+        <RootNamespace>Wavenet.Api.ViewModels.IdViewModelTests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.DataProtection.Extensions" Version="2.2.0" />
         <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="2.2.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
         <PackageReference Include="xunit" Version="2.4.0" />
         <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
@@ -16,7 +20,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Wavenet.Api.ViewModels.IdViewModel\Wavenet.Api.ViewModels.IdViewModel.csproj" />
+      <ProjectReference Include="..\Wavenet.Api.ViewModels.IdViewModel\Wavenet.Api.ViewModels.IdViewModel.csproj">
+        <Aliases></Aliases>
+      </ProjectReference>
     </ItemGroup>
 
 </Project>

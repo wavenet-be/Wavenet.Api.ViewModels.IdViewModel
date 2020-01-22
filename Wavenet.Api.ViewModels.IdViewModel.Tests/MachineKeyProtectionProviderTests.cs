@@ -4,7 +4,7 @@
 //  </copyright>
 // -----------------------------------------------------------------------
 
-namespace Wavenet.Api.ViewModels.IdViewModel.Tests
+namespace Wavenet.Api.ViewModels.IdViewModelTests
 {
     using Microsoft.AspNetCore.DataProtection;
     using Microsoft.AspNetCore.Hosting.Internal;
