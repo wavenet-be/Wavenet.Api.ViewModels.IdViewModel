@@ -149,7 +149,7 @@ namespace Wavenet.Api.ViewModels
         public bool Equals(IdViewModel other) => this.Id == other?.Id;
 
         /// <inheritdoc />
-        public override bool Equals(object obj) => !(obj is null) && this.Equals(obj as IdViewModel);
+        public override bool Equals(object obj) => obj is IdViewModel id && this.Equals(id);
 
         /// <inheritdoc />
         public override int GetHashCode() => this.Id.GetHashCode();
