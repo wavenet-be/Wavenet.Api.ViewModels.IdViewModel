@@ -2,14 +2,20 @@ name: ASP.NET CI
 on: [push]
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@master
 
+    - name: Setup Nuget.exe
+      uses: warrenbuckley/Setup-Nuget@v1
+      
     - name: Setup MSBuild.exe
       uses: warrenbuckley/Setup-MSBuild@v1
-
+      
+    - name: Nuget Restore
+      run: nuget restore
+      
     - name: MSBuild
 #      working-directory: src
-      run: msbuild Wavenet.Api.ViewModels.IdViewModel.sln
+      run: msbuild Wavenet.Api.ViewModels.IdViewModel.sln /p:Configuration=Release
