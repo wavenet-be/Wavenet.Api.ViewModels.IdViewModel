@@ -19,3 +19,6 @@ jobs:
     - name: MSBuild
 #      working-directory: src
       run: msbuild Wavenet.Api.ViewModels.IdViewModel.sln /p:Configuration=Release
+
+    - name: Run Tests
+      run: dotnet test ./Wavenet.Api.ViewModels.IdViewModel.Tests/Wavenet.Api.ViewModels.IdViewModel.Tests.csproj --configuration Release
